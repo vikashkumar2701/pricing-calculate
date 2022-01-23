@@ -22,7 +22,7 @@ export default function App() {
   let [platformamazon, setplatformamazon] = useState("6%");
   let [platformamazoncalc, setplatformamazoncalc] = useState(0);
   let [amazongst, setamazongst] = useState(0);
-  let [amazontotal, setamazontotal] = useState(0);
+  let [amztotal, setamazontotal] = useState(0);
 
   let [base, setbase] = useState(0);
   let gst = "18%";
@@ -173,7 +173,7 @@ export default function App() {
           <div className="dedx blue">
             <div title="reasonofdeduction"></div>
 
-            <div title="amountdeducted">INR {amazontotal}</div>
+            <div title="amountdeducted">INR {amztotal}</div>
           </div>
         </div>
       </div>
