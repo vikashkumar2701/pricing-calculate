@@ -34,21 +34,21 @@ export default function App() {
     //upi
     platformupicalc = (amount * 0.05).toFixed(2);
     upigst = (platformupicalc * 0.18).toFixed(2);
-    upitotal = amount - platformupicalc - upigst;
+    upitotal = (amount - platformupicalc - upigst).toFixed(2);
     setplatformupicalc(platformupicalc);
     setupitotal(upitotal);
     setupigst(upigst);
 
-    platformamazoncalc = amount * (0.06).toFixed(2);
+    platformamazoncalc = (amount * 0.06).toFixed(2);
     amazongst = (platformamazoncalc * 0.18).toFixed(2);
-    amztotal = amount - platformamazoncalc - amazongst;
+    amztotal = (amount - platformamazoncalc - amazongst).toFixed(2);
     setplatformamazoncalc(platformamazoncalc);
     setamazongst(amazongst);
     setamazontotal(amztotal);
 
-    platformpaytmcalc = amount * (0.1).toFixed(2);
+    platformpaytmcalc = (amount * 0.1).toFixed(2);
     paytmgst = (platformpaytmcalc * 0.18).toFixed(2);
-    paytmtotal = amount - platformpaytmcalc - paytmgst;
+    paytmtotal = (amount - platformpaytmcalc - paytmgst).toFixed(2);
     setplatformpaytmcalc(platformpaytmcalc);
     setpaytmgst(paytmgst);
     setpaytmtotal(paytmtotal);
