@@ -1,2 +1,2 @@
-# pricing-calculate
+# pricing-calculator
 Created with CodeSandbox
