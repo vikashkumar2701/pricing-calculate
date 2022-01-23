@@ -25,30 +25,37 @@ export default function App() {
   let [amztotal, setamazontotal] = useState(0);
 
   let [base, setbase] = useState(0);
+  var [tnsfee, settnsfee] = useState(0);
   let gst = "18%";
 
   function calc() {
     var amount = event.target.value;
     setbase(amount);
-
+    var tnsfeex = 0;
+    if (amount >= 1000) {
+      tnsfeex = 1;
+      settnsfee(1);
+    } else {
+      settnsfee(0);
+    }
     //upi
     platformupicalc = (amount * 0.05).toFixed(2);
     upigst = (platformupicalc * 0.18).toFixed(2);
-    upitotal = (amount - platformupicalc - upigst).toFixed(2);
+    upitotal = (amount - platformupicalc - upigst - tnsfeex).toFixed(2);
     setplatformupicalc(platformupicalc);
     setupitotal(upitotal);
     setupigst(upigst);
 
     platformamazoncalc = (amount * 0.06).toFixed(2);
     amazongst = (platformamazoncalc * 0.18).toFixed(2);
-    amztotal = (amount - platformamazoncalc - amazongst).toFixed(2);
+    amztotal = (amount - platformamazoncalc - amazongst - tnsfeex).toFixed(2);
     setplatformamazoncalc(platformamazoncalc);
     setamazongst(amazongst);
     setamazontotal(amztotal);
 
     platformpaytmcalc = (amount * 0.1).toFixed(2);
     paytmgst = (platformpaytmcalc * 0.18).toFixed(2);
-    paytmtotal = (amount - platformpaytmcalc - paytmgst).toFixed(2);
+    paytmtotal = (amount - platformpaytmcalc - paytmgst - tnsfeex).toFixed(2);
     setplatformpaytmcalc(platformpaytmcalc);
     setpaytmgst(paytmgst);
     setpaytmtotal(paytmtotal);
@@ -81,7 +88,7 @@ export default function App() {
       <div className="hoax">
         See the math behind the price for our service. Our platform earns only
         if our merchant earns. We charge only on credits withdrawal else
-        everything is <span class="notice">FREE</span>.
+        everything is <span className="notice">FREE</span>.
       </div>
 
       <div className="form">
@@ -111,10 +118,16 @@ export default function App() {
 
             <div title="amountdeducted">- INR {platformupicalc}</div>
           </div>
+
           <div className="dedx">
             <div title="reasonofdeduction">GST ({gst}):</div>
 
             <div title="amountdeducted">- INR {upigst}</div>
+          </div>
+          <div className="dedx">
+            <div title="reasonofdeduction">Transfer Fee:</div>
+
+            <div title="amountdeducted">- INR {tnsfee}</div>
           </div>
           <div className="dedx blue">
             <div title="reasonofdeduction"></div>
@@ -138,10 +151,16 @@ export default function App() {
 
             <div title="amountdeducted">- INR {platformpaytmcalc}</div>
           </div>
+
           <div className="dedx">
             <div title="reasonofdeduction">GST ({gst}):</div>
 
             <div title="amountdeducted">- INR {paytmgst}</div>
+          </div>
+          <div className="dedx">
+            <div title="reasonofdeduction">Transfer Fee:</div>
+
+            <div title="amountdeducted">- INR {tnsfee}</div>
           </div>
           <div className="dedx blue">
             <div title="reasonofdeduction"></div>
@@ -165,10 +184,16 @@ export default function App() {
 
             <div title="amountdeducted">- INR {platformamazoncalc}</div>
           </div>
+
           <div className="dedx">
             <div title="reasonofdeduction">GST ({gst}):</div>
 
             <div title="amountdeducted">- INR {amazongst}</div>
+          </div>
+          <div className="dedx">
+            <div title="reasonofdeduction">Transfer Fee:</div>
+
+            <div title="amountdeducted">- INR {tnsfee}</div>
           </div>
           <div className="dedx blue">
             <div title="reasonofdeduction"></div>
